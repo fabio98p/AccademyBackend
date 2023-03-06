@@ -26,7 +26,7 @@ namespace AcademyEFPersistance.EFContext
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer("Server = localhost; User Id=sa; Password=1Secure*Password; Database = Accademy3", x => x.UseNodaTime())
+			optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;database=AccademyDb;trusted_connection=true", x => x.UseNodaTime())
 			    .LogTo(Console.WriteLine,
 			    new[] {
 				 DbLoggerCategory.Database.Command.Name

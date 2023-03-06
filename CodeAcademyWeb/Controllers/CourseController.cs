@@ -15,15 +15,16 @@ namespace CodeAcademyWeb.Controllers
 	[ApiController]
 	public class CourseController : Controller
 	{
-		private IDidactisService service;
-		private IMapper mapper;
-		public CourseController(IDidactisService service, IMapper mapper)
+		//private IDidactisService service;
+		private ICoursesService service;
+        private IMapper mapper;
+		public CourseController(ICoursesService service, IMapper mapper)
 		{
 			this.service = service;
 			this.mapper = mapper;
 		}
 		[HttpGet]
-		public IActionResult GetAll()
+		public IActionResult GetAllCourse()
 		{
 			var course = service.GetAllCourses();
 			var courseDTOs = mapper.Map<IEnumerable<CourseDTO>>(course);
@@ -31,19 +32,11 @@ namespace CodeAcademyWeb.Controllers
 		}
 		[HttpGet]
 		[Route("{id}")]
-		public IActionResult GetById(long id) {
+		public IActionResult GetCourseById(long id)
+		{
 			var course = service.GetCourseById(id);
 			var courseDTO = mapper.Map<CourseDTO>(course);
 			return Ok(courseDTO);
-		}
-
-		[HttpGet]
-		[Route("areas")]
-		public IActionResult GetAllAreas()
-		{
-			var areas = service.GetAllAreas();
-			var areaDTOs = mapper.Map<IEnumerable<AreaDTO>>(areas);
-			return Ok(areaDTOs);
 		}
 		[HttpPost]
 		public IActionResult CreateCourse(CourseDTO courseDTO)
@@ -74,7 +67,7 @@ namespace CodeAcademyWeb.Controllers
 		[Route("{id}")]
 		public IActionResult RemoveCourse(long id)
 		{
-			var course =service.GetCourseById(id);
+			var course = service.GetCourseById(id);
 			service.DeleteCourse(id);
 			var resDTO = mapper.Map<CourseDTO>(course);
 			return Ok(resDTO);

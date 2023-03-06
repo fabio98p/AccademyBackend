@@ -31,60 +31,6 @@ namespace AcademyEFPersistence.Services
 			this.ctx = ctx;
 		}
 
-		#region Course
-		public IEnumerable<Course> FindCourseByTitleLike(string title)
-		{
-			return courseRepo.FindCourseByTitleLike(title);
-		}
-		public IEnumerable<Course> FindCourseByCourseDescriptionLike(string description)
-		{
-			return courseRepo.FindCourseByCourseDescriptionLike(description);
-		}
-		public IEnumerable<Course> FindCourseByArea(long idArea)
-		{
-			return courseRepo.FindCourseByArea(idArea);
-		}
-		public IEnumerable<Course> GetAllCourses()
-		{
-			return courseRepo.GetAll();
-		}
-		public Course GetCourseById(long id)
-		{
-			return courseRepo.FindById(id);
-		}
-		public Course CreateCourse(Course c)
-		{
-			var res = courseRepo.Create(c);
-			ctx.SaveChanges();
-			return res;
-		}
-		public void DeleteCourse(Course c)
-		{
-			courseRepo.Delete(c);
-			ctx.SaveChanges();
-		}
-		public void DeleteCourse(long id)
-		{
-			courseRepo.Delete(id);
-			ctx.SaveChanges();
-		}
-		public IEnumerable<CourseEdition> GetEditionsByCourseId(long id)
-		{
-			return editionRepo.GetEditionsByCourseId(id);
-		}
-
-		public Course UpdateCourse(Course c)
-		{
-			var res = courseRepo.Update(c);
-			ctx.SaveChanges();
-			return res;
-		}
-
-		public IEnumerable<Course> GetLastCourses(int n)
-		{
-			return courseRepo.GetLastCourses(n);
-		}
-		#endregion
 
 		#region CourseEditions
 		public IEnumerable<CourseEdition> GetAllEditions()
@@ -95,7 +41,11 @@ namespace AcademyEFPersistence.Services
 		{
 			return editionRepo.FindById(id);
 		}
-		public CourseEdition CreateCourseEdition(CourseEdition e)
+        public IEnumerable<CourseEdition> GetEditionsByCourseId(long id)
+        {
+            return editionRepo.GetEditionsByCourseId(id);
+        }
+        public CourseEdition CreateCourseEdition(CourseEdition e)
 		{
 			CheckCourse(e.CourseId);
 			CheckInstructor(e.InstructorId);

@@ -31,7 +31,7 @@ namespace CodeAcademyWeb
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<AcademyContext>(opt => opt.UseSqlServer("Server = localhost; User Id=sa; Password=1Secure*Password; Database = Accademy3", x => x.UseNodaTime())
+			services.AddDbContext<AcademyContext>(opt => opt.UseSqlServer("server=localhost\\sqlexpress;database=AccademyDb;trusted_connection=true", x => x.UseNodaTime())
 						   .LogTo(Console.WriteLine, new[]
 						   {
 			  DbLoggerCategory.Database.Command.Name
@@ -39,7 +39,9 @@ namespace CodeAcademyWeb
 
 			services.AddControllersWithViews();
 			services.AddScoped<IDidactisService, EFDidactisService>();
-			services.AddScoped<IStudentRepository, EFStudentRepository>();
+			services.AddScoped<ICoursesService, EFCoursesService>();
+
+            services.AddScoped<IStudentRepository, EFStudentRepository>();
 			services.AddScoped<ICourseRepository, EFCourseRepository>();
 			services.AddScoped<IEditionRepository, EFEditionRepository>();
 			services.AddScoped<IInstructorRepository, EFInstructorRepository>();
