@@ -68,7 +68,7 @@ namespace AcademyEFPersistance.Services
 			var edition = editionRepo.FindById(data.IdEdition);
 			if (edition == null)
 			{
-				throw new EntityNotFoundException($"L'edizione con id {data.IdEdition} non esiste.", nameof(CourseEdition));
+				throw new EntityNotFoundException($"L'edizione con id {data.IdEdition} non esiste.", nameof(Edition));
 			}
 			var enr = new Enrollment()
 			{
@@ -104,7 +104,7 @@ namespace AcademyEFPersistance.Services
 			return enrollmentRepo.GetSubscribedEnrollmentByStudentId(id).ToList();
 		}
 
-        public IEnumerable<CourseEdition> GetAvailableEnrollmentByStudentId(long id)
+        public IEnumerable<Edition> GetAvailableEnrollmentByStudentId(long id)
         {
 			var editions = editionRepo.GetAvailableEnrollmentByStudentId(id).ToList();
 			return editions;

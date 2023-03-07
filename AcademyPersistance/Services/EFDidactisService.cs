@@ -33,19 +33,19 @@ namespace AcademyEFPersistence.Services
 
 
 		#region CourseEditions
-		public IEnumerable<CourseEdition> GetAllEditions()
+		public IEnumerable<Edition> GetAllEditions()
 		{
 			return editionRepo.GetAll();
 		}
-		public CourseEdition GetEditionById(long id)
+		public Edition GetEditionById(long id)
 		{
 			return editionRepo.FindById(id);
 		}
-        public IEnumerable<CourseEdition> GetEditionsByCourseId(long id)
+        public IEnumerable<Edition> GetEditionsByCourseId(long id)
         {
             return editionRepo.GetEditionsByCourseId(id);
         }
-        public CourseEdition CreateCourseEdition(CourseEdition e)
+        public Edition CreateCourseEdition(Edition e)
 		{
 			CheckCourse(e.CourseId);
 			CheckInstructor(e.InstructorId);
@@ -53,7 +53,7 @@ namespace AcademyEFPersistence.Services
 			ctx.SaveChanges();
 			return e;
 		}
-		public CourseEdition EditCourseEdition(CourseEdition e)
+		public Edition EditCourseEdition(Edition e)
 		{
 			CheckCourse(e.CourseId);
 			CheckInstructor(e.InstructorId);
@@ -68,7 +68,7 @@ namespace AcademyEFPersistence.Services
 			editionRepo.Delete(edition);
 			ctx.SaveChanges();
 		}
-		public IEnumerable<CourseEdition> Search(EditionSearchInfo info)
+		public IEnumerable<Edition> Search(EditionSearchInfo info)
 		{
 			if (info.Start != null || info.End != null)
 			{
@@ -130,12 +130,12 @@ namespace AcademyEFPersistence.Services
 			}
 			return instructor;
 		}
-		private CourseEdition CheckCourseEdition(long id)
+		private Edition CheckCourseEdition(long id)
 		{
 			var courseEdition = editionRepo.FindById(id);
 			if (courseEdition == null)
 			{
-				throw new EntityNotFoundException("L'id dell'edizione non corrisponde ad un edizione esistente", nameof(CourseEdition));
+				throw new EntityNotFoundException("L'id dell'edizione non corrisponde ad un edizione esistente", nameof(Edition));
 			}
 			return courseEdition;
 		}

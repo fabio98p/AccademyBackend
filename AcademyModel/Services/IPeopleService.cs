@@ -19,7 +19,7 @@ namespace AcademyModel.Services
 		void DeleteStudent(long id);
 
 		IEnumerable<Enrollment> GetSubscribedEnrollmentByStudentId(long id);
-		IEnumerable<CourseEdition> GetAvailableEnrollmentByStudentId(long id);
+		IEnumerable<Edition> GetAvailableEnrollmentByStudentId(long id);
 		Enrollment EnrollSudentToEdition(EnrollData data);
 		Enrollment CreateEnrollment(Enrollment s);
 		void DeleteEnrollment(long id);

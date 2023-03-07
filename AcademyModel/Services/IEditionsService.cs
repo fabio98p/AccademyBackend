@@ -10,13 +10,13 @@ namespace AcademyModel.Services
 {
     public interface IEditionsService
     {
-        CourseEdition CreateCourseEdition(CourseEdition e);
+        Edition CreateCourseEdition(Edition e);
 
-        IEnumerable<CourseEdition> GetAllEditions();
-        CourseEdition GetEditionById(long id);
-        CourseEdition EditCourseEdition(CourseEdition e);
+        IEnumerable<Edition> GetAllEditions();
+        Edition GetEditionById(long id);
+        Edition EditCourseEdition(Edition e);
         void DeleteCourseEdition(long id);
-        public IEnumerable<CourseEdition> GetEditionsByCourseId(long id);
-        IEnumerable<CourseEdition> Search(EditionSearchInfo info);
+        public IEnumerable<Edition> GetEditionsByCourseId(long id);
+        IEnumerable<Edition> Search(EditionSearchInfo info);
     }
 }

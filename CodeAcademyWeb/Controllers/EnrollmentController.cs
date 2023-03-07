@@ -36,7 +36,7 @@ namespace CodeAcademyWeb.Controllers
         public IActionResult GetAvailableEnrollmentByStudentId(long id)
         {
             var enrollments = service.GetAvailableEnrollmentByStudentId(id);
-            var enrollmentDTOs = mapper.Map<IEnumerable<CourseEditionDetailsDTO>>(enrollments);
+            var enrollmentDTOs = mapper.Map<IEnumerable<EditionDetailsDTO>>(enrollments);
             return Ok(enrollmentDTOs);
         }
 		[HttpPost]

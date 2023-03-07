@@ -12,7 +12,7 @@ namespace AcademyModel.Entities
 		public long Id { get; set; }
 		public string Subject { get; set; }
 		public long CourseEditionId { get; set; }
-		public CourseEdition CourseEdition { get; set; }
+		public Edition CourseEdition { get; set; }
 		public long ClassroomId { get; set; }
 		public Classroom Classroom { get; set; }
 		public LocalDateTime Start { get; set; }

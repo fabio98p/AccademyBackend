@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AcademyModel.Entities
 {
-	public class CourseEdition
+	public class Edition
 	{
 		public long Id { get; set; }
 		public string Code { get; set; }

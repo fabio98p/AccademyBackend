@@ -15,7 +15,7 @@ namespace AcademyEFPersistance.EFContext
 		public DbSet<Classroom> Classrooms { get; set; }
 		public DbSet<Competence> Competences { get; set; }
 		public DbSet<Course> Courses { get; set; }
-		public DbSet<CourseEdition> CourseEditions { get; set; }
+		public DbSet<Edition> CourseEditions { get; set; }
 		public DbSet<Instructor> Instructors { get; set; }
 		public DbSet<Lesson> Lessons { get; set; }
 		public DbSet<Skill> Skills { get; set; }

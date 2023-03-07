@@ -20,6 +20,6 @@ namespace AcademyModel.Entities
 		public Area Area { get; set; }
 		public bool GrantsCertification { get; set; }
 		public LocalDate CreationDate { get; set; }
-		public ICollection<CourseEdition> Editions { get; set; } = new List<CourseEdition>();
+		public ICollection<Edition> Editions { get; set; } = new List<Edition>();
 	}
 }

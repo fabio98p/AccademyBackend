@@ -14,7 +14,7 @@ using AcademyEFPersistance.EFContext;
 
 namespace AcademyEFPersistance.Repository
 {
-	public class EFEditionRepository : EFCrudRepository<CourseEdition, long>, IEditionRepository
+	public class EFEditionRepository : EFCrudRepository<Edition, long>, IEditionRepository
 	{
 		public EFEditionRepository(AcademyContext ctx) : base(ctx)
 		{
@@ -23,15 +23,15 @@ namespace AcademyEFPersistance.Repository
 		// corsi futuri | corisi passati | corsi in range tra a e b | --checked
 		// corsi futuri su id instructor | corisi passati su id instructor | corsi in range tra a e b su id instructor |
 		// ricerca like su titolo e in range tra a e b --checked
-		public override CourseEdition FindById(long id)
+		public override Edition FindById(long id)
 		{
 			return ctx.CourseEditions.Include( e => e.Course ).Include( e => e.Instructor ).SingleOrDefault ( e => e.Id == id );
 		}
 
-		public IEnumerable<CourseEdition> Search(EditionSearchInfo info)
+		public IEnumerable<Edition> Search(EditionSearchInfo info)
 		{
 			LocalDate today = LocalDate.FromDateTime(new DateTime());
-			IQueryable<CourseEdition> editions = ctx.CourseEditions;
+			IQueryable<Edition> editions = ctx.CourseEditions;
 
 			if (info.Start != null || info.End != null)
 			{
@@ -67,12 +67,12 @@ namespace AcademyEFPersistance.Repository
 			}
 			return editions;
 		}
-		public IEnumerable<CourseEdition> GetEditionsByCourseId(long id)
+		public IEnumerable<Edition> GetEditionsByCourseId(long id)
 		{
 			return ctx.CourseEditions.Include(c => c.Course).Where(e => e.CourseId == id);
 
 		}
-		public IEnumerable<CourseEdition> GetAvailableEnrollmentByStudentId(long id)
+		public IEnumerable<Edition> GetAvailableEnrollmentByStudentId(long id)
 		{
 			DateTime localDate = DateTime.Now;
 			var date = LocalDateTime.FromDateTime(localDate).Date;

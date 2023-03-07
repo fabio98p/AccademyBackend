@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeAcademyWeb.DTOs
 {
-	public class CourseEditionDetailsDTO
+	public class EditionDetailsDTO
 	{
 		public long Id { get; set; }
 		public string Code { get; set; }

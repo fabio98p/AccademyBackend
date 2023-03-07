@@ -14,13 +14,13 @@ namespace CodeAcademyWeb.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class CourseEditionController : Controller
+	public class EditionController : Controller
 	{
 		private IEditionsService service;
         //private IDidactisService service;
 
         private IMapper mapper;
-		public CourseEditionController(IEditionsService service, IMapper mapper)
+		public EditionController(IEditionsService service, IMapper mapper)
 		{
 			this.service = service;
 			this.mapper = mapper;
@@ -29,7 +29,7 @@ namespace CodeAcademyWeb.Controllers
 		public IActionResult GetAll()
 		{
 			var editions = service.GetAllEditions();
-			var editionDTOs = mapper.Map<IEnumerable<CourseEditionDTO>>(editions);
+			var editionDTOs = mapper.Map<IEnumerable<EditionDTO>>(editions);
 			return Ok(editionDTOs);
 		}
 		[Route("{id}")]
@@ -41,17 +41,17 @@ namespace CodeAcademyWeb.Controllers
 			{
 				return NotFound();
 			}
-			var editionDTO = mapper.Map<CourseEditionDetailsDTO>(edition);
+			var editionDTO = mapper.Map<EditionDetailsDTO>(edition);
 			return Ok(editionDTO);
 		}
 		[HttpPost]
-		public IActionResult Create(CourseEditionDetailsDTO e)
+		public IActionResult Create(EditionDetailsDTO e)
 		{
 			try
 			{
-				var edition = mapper.Map<CourseEdition>(e);
+				var edition = mapper.Map<Edition>(e);
 				service.CreateCourseEdition(edition);
-				var courseEditionDTO = mapper.Map<CourseEditionDetailsDTO>(edition);
+				var courseEditionDTO = mapper.Map<EditionDetailsDTO>(edition);
 				return Created($"/api/edition/{courseEditionDTO.Id}", courseEditionDTO);
 			}
 			catch (EntityNotFoundException ex)
@@ -60,20 +60,20 @@ namespace CodeAcademyWeb.Controllers
 			}
 		}
 		[HttpPut]
-		public IActionResult Edit(CourseEditionDetailsDTO e)
+		public IActionResult Edit(EditionDetailsDTO e)
 		{
 			try
 			{
-				var edition = mapper.Map<CourseEdition>(e);
+				var edition = mapper.Map<Edition>(e);
 				service.EditCourseEdition(edition);
-				var courseEditionDTO = mapper.Map<CourseEditionDetailsDTO>(edition);
+				var courseEditionDTO = mapper.Map<EditionDetailsDTO>(edition);
 				return Ok(courseEditionDTO);
 			}
 			catch (EntityNotFoundException ex)
 			{
 				switch (ex.EntityName)
 				{
-					case nameof(CourseEdition):
+					case nameof(Edition):
 						return NotFound(ex.Message);
 
 					default:
@@ -100,7 +100,7 @@ namespace CodeAcademyWeb.Controllers
 		public IActionResult GetEditionsByCourseId(long id)
 		{
 			var editions = service.GetEditionsByCourseId(id);
-			var editionDTOs = mapper.Map<IEnumerable<CourseEditionDetailsDTO>>(editions);
+			var editionDTOs = mapper.Map<IEnumerable<EditionDetailsDTO>>(editions);
 			return Ok(editionDTOs);
 		}
 	}
