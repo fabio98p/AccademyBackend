@@ -16,9 +16,11 @@ namespace CodeAcademyWeb.Controllers
 	[ApiController]
 	public class CourseEditionController : Controller
 	{
-		private IDidactisService service;
-		private IMapper mapper;
-		public CourseEditionController(IDidactisService service, IMapper mapper)
+		private IEditionsService service;
+        //private IDidactisService service;
+
+        private IMapper mapper;
+		public CourseEditionController(IEditionsService service, IMapper mapper)
 		{
 			this.service = service;
 			this.mapper = mapper;

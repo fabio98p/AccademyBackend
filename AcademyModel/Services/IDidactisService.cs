@@ -12,14 +12,14 @@ namespace AcademyModel.Services
 {
 	public interface IDidactisService
 	{
-		CourseEdition CreateCourseEdition(CourseEdition e);
+		//CourseEdition CreateCourseEdition(CourseEdition e);
 
-		IEnumerable<CourseEdition> GetAllEditions();
-		CourseEdition GetEditionById(long id);
-		CourseEdition EditCourseEdition(CourseEdition e);
-		void DeleteCourseEdition(long id);
-		public IEnumerable<CourseEdition> GetEditionsByCourseId(long id);
-		IEnumerable<CourseEdition> Search(EditionSearchInfo info);
+		//IEnumerable<CourseEdition> GetAllEditions();
+		//CourseEdition GetEditionById(long id);
+		//CourseEdition EditCourseEdition(CourseEdition e);
+		//void DeleteCourseEdition(long id);
+		//public IEnumerable<CourseEdition> GetEditionsByCourseId(long id);
+		//IEnumerable<CourseEdition> Search(EditionSearchInfo info);
 
 
 		
@@ -27,7 +27,7 @@ namespace AcademyModel.Services
 		IEnumerable<Lesson> FindLessonForEditionId(long id);
 		IEnumerable<Lesson> FindLessonInRange(LocalDate start, LocalDate end);
 
-		IEnumerable<Area> GetAllAreas();
+		//IEnumerable<Area> GetAllAreas();
 
 
 		

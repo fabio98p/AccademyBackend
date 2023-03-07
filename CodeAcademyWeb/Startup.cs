@@ -38,14 +38,19 @@ namespace CodeAcademyWeb
 						   }, LogLevel.Information).EnableSensitiveDataLogging());
 
 			services.AddControllersWithViews();
-			services.AddScoped<IDidactisService, EFDidactisService>();
+
+			services.AddScoped<IAreasService, EFAreasService>();
 			services.AddScoped<ICoursesService, EFCoursesService>();
+			services.AddScoped<IDidactisService, EFDidactisService>();
+			services.AddScoped<IEditionsService, EFEditionsService>();
+			services.AddScoped<IEnrollmentsService, EFEnrollmentsService>();
+			services.AddScoped<ILessonsService, EFLessonsService>();
+			services.AddScoped<IPeopleService, EFPeopleService>();
 
             services.AddScoped<IStudentRepository, EFStudentRepository>();
 			services.AddScoped<ICourseRepository, EFCourseRepository>();
 			services.AddScoped<IEditionRepository, EFEditionRepository>();
 			services.AddScoped<IInstructorRepository, EFInstructorRepository>();
-			services.AddScoped<IPeopleService, EFPeopleService>();
 			services.AddScoped<IAreaRepository, EFAreaRepository>();
 			services.AddScoped<IEnrollmentRepository, EFEnrollmentRepository>();
 

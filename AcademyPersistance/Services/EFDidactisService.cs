@@ -106,10 +106,10 @@ namespace AcademyEFPersistence.Services
 		}
 		#endregion
 		
-		public IEnumerable<Area> GetAllAreas()
-		{
-			return areaRepo.GetAll().ToList();
-		}
+		//public IEnumerable<Area> GetAllAreas()
+		//{
+		//	return areaRepo.GetAll().ToList();
+		//}
 
 		#region Helpers
 		private Course CheckCourse(long id)

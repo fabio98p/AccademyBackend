@@ -10,9 +10,9 @@ namespace CodeAcademyWeb.Controllers
     [ApiController]
     public class AreaController : Controller
     {
-        private IDidactisService service;
+        private IAreasService service;
         private IMapper mapper;
-        public AreaController(IDidactisService service, IMapper mapper)
+        public AreaController(IAreasService service, IMapper mapper)
         {
             this.service = service;
             this.mapper = mapper;
