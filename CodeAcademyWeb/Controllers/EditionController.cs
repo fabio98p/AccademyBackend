@@ -103,5 +103,13 @@ namespace CodeAcademyWeb.Controllers
 			var editionDTOs = mapper.Map<IEnumerable<EditionDetailsDTO>>(editions);
 			return Ok(editionDTOs);
 		}
-	}
+        [HttpGet]
+        [Route("studentAvailable/{id}")]
+        public IActionResult GetAvailableEnrollmentByStudentId(long id)
+        {
+            var enrollments = service.GetAvailableEnrollmentByStudentId(id);
+            var enrollmentDTOs = mapper.Map<IEnumerable<EditionDetailsDTO>>(enrollments);
+            return Ok(enrollmentDTOs);
+        }
+    }
 }

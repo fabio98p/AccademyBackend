@@ -86,6 +86,11 @@ namespace AcademyEFPersistance.Services
             }
             return editionRepo.Search(info).ToList();
         }
+        public IEnumerable<Edition> GetAvailableEnrollmentByStudentId(long id)
+        {
+            var editions = editionRepo.GetAvailableEnrollmentByStudentId(id).ToList();
+            return editions;
+        }
         #endregion
 
         private Course CheckCourse(long id)

@@ -18,6 +18,7 @@ namespace CodeAcademyWeb.Controllers
 	public class StudentController : Controller
 	{
 		private IPeopleService service;
+		private IEnrollmentsService enrollmentsService;
 		private IMapper mapper;
 		public StudentController(IPeopleService service, IMapper mapper)
 		{
@@ -71,7 +72,7 @@ namespace CodeAcademyWeb.Controllers
 				return BadRequest(new ErrorObject(StatusCodes.Status400BadRequest, "L'id studente nell'URL e nel body non coincidono."));
 			}
 			var data = mapper.Map<EnrollData>(dataDTO);
-			var enr = service.EnrollSudentToEdition(data);
+			var enr = enrollmentsService.EnrollSudentToEdition(data);
 			var enrDTO = mapper.Map<EnrollmentDTO>(enr);
 			return Created($"/api/student/{data.IdStudent}/enrollments/{enr.Id}", enrDTO);
 		}

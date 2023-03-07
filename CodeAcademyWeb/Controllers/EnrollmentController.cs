@@ -16,9 +16,9 @@ namespace CodeAcademyWeb.Controllers
 	[ApiController]
 	public class EnrollmentController : Controller
 	{
-		private IPeopleService service;
+		private IEnrollmentsService service;
 		private IMapper mapper;
-		public EnrollmentController(IPeopleService service, IMapper mapper)
+		public EnrollmentController(IEnrollmentsService service, IMapper mapper)
 		{
 			this.service = service;
 			this.mapper = mapper;
@@ -31,14 +31,14 @@ namespace CodeAcademyWeb.Controllers
 			var enrollmentDTOs = mapper.Map<IEnumerable<EnrollmentDTO>>(enrollments);
 			return Ok(enrollmentDTOs);
 		}
-        [HttpGet]
-        [Route("studentAvailable/{id}")]
-        public IActionResult GetAvailableEnrollmentByStudentId(long id)
-        {
-            var enrollments = service.GetAvailableEnrollmentByStudentId(id);
-            var enrollmentDTOs = mapper.Map<IEnumerable<EditionDetailsDTO>>(enrollments);
-            return Ok(enrollmentDTOs);
-        }
+        //[HttpGet]
+        //[Route("studentAvailable/{id}")]
+        //public IActionResult GetAvailableEnrollmentByStudentId(long id)
+        //{
+        //    var enrollments = service.GetAvailableEnrollmentByStudentId(id);
+        //    var enrollmentDTOs = mapper.Map<IEnumerable<EditionDetailsDTO>>(enrollments);
+        //    return Ok(enrollmentDTOs);
+        //}
 		[HttpPost]
 		public IActionResult Create(EnrollmentDTO e)
 		{

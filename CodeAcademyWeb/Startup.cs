@@ -1,21 +1,16 @@
 using AcademyEFPersistance.EFContext;
 using AcademyEFPersistance.Repository;
 using AcademyEFPersistance.Services;
-using AcademyEFPersistence.Services;
 using AcademyModel.Repositories;
 using AcademyModel.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CodeAcademyWeb
 {
@@ -41,7 +36,6 @@ namespace CodeAcademyWeb
 
 			services.AddScoped<IAreasService, EFAreasService>();
 			services.AddScoped<ICoursesService, EFCoursesService>();
-			services.AddScoped<IDidactisService, EFDidactisService>();
 			services.AddScoped<IEditionsService, EFEditionsService>();
 			services.AddScoped<IEnrollmentsService, EFEnrollmentsService>();
 			services.AddScoped<ILessonsService, EFLessonsService>();
@@ -52,9 +46,10 @@ namespace CodeAcademyWeb
 			services.AddScoped<IEditionRepository, EFEditionRepository>();
 			services.AddScoped<IInstructorRepository, EFInstructorRepository>();
 			services.AddScoped<IAreaRepository, EFAreaRepository>();
+			services.AddScoped<ILessonRepository, EFLessonRepository>();
 			services.AddScoped<IEnrollmentRepository, EFEnrollmentRepository>();
 
-			services.AddCors(c =>                            // permette chiamate CORS per front-end
+            services.AddCors(c =>                            // permette chiamate CORS per front-end
 			{
 				c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 			});

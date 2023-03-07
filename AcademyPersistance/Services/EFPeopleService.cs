@@ -58,36 +58,46 @@ namespace AcademyEFPersistance.Services
 			studentRepo.Delete(s);
 			ctx.SaveChanges();
 		}
-		public Enrollment EnrollSudentToEdition(EnrollData data)
-		{
-			var student = studentRepo.FindById(data.IdStudent);
-			if (student == null)
-			{
-				throw new EntityNotFoundException($"Lo studente con id {data.IdStudent} non esiste.", nameof(Student));
-			}
-			var edition = editionRepo.FindById(data.IdEdition);
-			if (edition == null)
-			{
-				throw new EntityNotFoundException($"L'edizione con id {data.IdEdition} non esiste.", nameof(Edition));
-			}
-			var enr = new Enrollment()
-			{
-				CourseEditionId = edition.Id,
-				StudentId = student.Id
-			};
-			ctx.Enrollments.Add(enr);
-			ctx.SaveChanges();
-			//ctx.Entry(enr).Reference(e => e.Student).Load();
-			//ctx.Entry(enr).Reference(e => e.CourseEdition).Load();
-			//ctx.Entry(enr.CourseEdition).Reference(e => e.Course).Load();
-			return enr;
-		}
-		public Enrollment CreateEnrollment(Enrollment e)
-		{
-			enrollmentRepo.Create(e);
-			ctx.SaveChanges();  //Salviamo qui invece che nella repository
-			return e;
-		}
+		//public Enrollment EnrollSudentToEdition(EnrollData data)
+		//{
+		//	var student = studentRepo.FindById(data.IdStudent);
+		//	if (student == null)
+		//	{
+		//		throw new EntityNotFoundException($"Lo studente con id {data.IdStudent} non esiste.", nameof(Student));
+		//	}
+		//	var edition = editionRepo.FindById(data.IdEdition);
+		//	if (edition == null)
+		//	{
+		//		throw new EntityNotFoundException($"L'edizione con id {data.IdEdition} non esiste.", nameof(Edition));
+		//	}
+		//	var enr = new Enrollment()
+		//	{
+		//		CourseEditionId = edition.Id,
+		//		StudentId = student.Id
+		//	};
+		//	ctx.Enrollments.Add(enr);
+		//	ctx.SaveChanges();
+		//	ctx.Entry(enr).Reference(e => e.Student).Load();
+		//	ctx.Entry(enr).Reference(e => e.CourseEdition).Load();
+		//	ctx.Entry(enr.CourseEdition).Reference(e => e.Course).Load();
+		//	return enr;
+		//}
+		//public Enrollment CreateEnrollment(Enrollment e)
+		//{
+		//	enrollmentRepo.Create(e);
+		//	ctx.SaveChanges();  //Salviamo qui invece che nella repository
+		//	return e;
+		//}
+		//public void DeleteEnrollment(long id)
+		//{
+		//	var enrollmment = enrollmentRepo.FindById(id);
+		//	enrollmentRepo.Delete(enrollmment);
+		//	ctx.SaveChanges();
+		//}
+		//public IEnumerable<Enrollment> GetSubscribedEnrollmentByStudentId(long id)
+		//{
+		//	return enrollmentRepo.GetSubscribedEnrollmentByStudentId(id).ToList();
+		//}
 
 		public Instructor GetInstructorById(long id)
 		{
@@ -99,16 +109,8 @@ namespace AcademyEFPersistance.Services
 			return instructorRepo.GetAll();
 		}
 
-		public IEnumerable<Enrollment> GetSubscribedEnrollmentByStudentId(long id)
-		{
-			return enrollmentRepo.GetSubscribedEnrollmentByStudentId(id).ToList();
-		}
 
-        public IEnumerable<Edition> GetAvailableEnrollmentByStudentId(long id)
-        {
-			var editions = editionRepo.GetAvailableEnrollmentByStudentId(id).ToList();
-			return editions;
-		}
+
 
 		public void DeleteStudent(long id)
 		{
@@ -116,11 +118,5 @@ namespace AcademyEFPersistance.Services
 			ctx.SaveChanges();
 		}
 
-		public void DeleteEnrollment(long id)
-		{
-			var enrollmment = enrollmentRepo.FindById(id);
-			enrollmentRepo.Delete(enrollmment);
-			ctx.SaveChanges();
-		}
 	}
 }

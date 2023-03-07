@@ -18,7 +18,8 @@ namespace AcademyEFPersistance.Repository
 
 		public override Course FindById(long id)
 		{
-			return ctx.Courses.Include( c => c.Area).SingleOrDefault( c => c.Id == id);
+			var a = ctx.Courses.Include(c => c.Area).SingleOrDefault(c => c.Id == id);
+			return a;
 		}
 		public IEnumerable<Course> FindCourseByArea(long idArea)
 		{

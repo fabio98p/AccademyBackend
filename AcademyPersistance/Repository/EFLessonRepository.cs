@@ -19,7 +19,8 @@ namespace AcademyEFPersistance.Repository
 
 		public IEnumerable<Lesson> FindLessonForEditionId(long id)
 		{
-			return ctx.Lessons.Where(l => l.CourseEditionId == id);
+			var a = ctx.Lessons.Where(l => l.CourseEditionId == id);
+			return a;
 		}
 
 		public IEnumerable<Lesson> FindLessonInRange(LocalDate start, LocalDate end)

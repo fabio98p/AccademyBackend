@@ -18,5 +18,7 @@ namespace AcademyModel.Services
         void DeleteCourseEdition(long id);
         public IEnumerable<Edition> GetEditionsByCourseId(long id);
         IEnumerable<Edition> Search(EditionSearchInfo info);
+        IEnumerable<Edition> GetAvailableEnrollmentByStudentId(long id);
+
     }
 }
